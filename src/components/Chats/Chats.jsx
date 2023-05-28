@@ -52,7 +52,7 @@ const Chats = () => {
               <div className={styles.userChatInfo}>
                 <span>{displayName}</span>
                 <p>
-                  {lastMessage.text.length > 30
+                  {lastMessage?.text.length > 30
                     ? lastMessage?.text.slice(0, 30) + "..."
                     : lastMessage?.text}
                 </p>
