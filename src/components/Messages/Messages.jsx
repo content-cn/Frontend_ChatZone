@@ -21,6 +21,11 @@ const Messages = () => {
 
   return (
     <div className={styles.messages}>
+      {!messages.length && (
+        <p style={{ textAlign: "center", fontSize: "2rem", marginTop: "25%" }}>
+          Start Chatting!
+        </p>
+      )}
       {messages.map((m) => (
         <Message message={m} key={m.id} />
       ))}

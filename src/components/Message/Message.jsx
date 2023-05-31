@@ -7,6 +7,9 @@ const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
+  const date = new Date(message.date.seconds * 1000);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
   const ref = useRef();
 
   useEffect(() => {
@@ -29,10 +32,10 @@ const Message = ({ message }) => {
           }
           alt=""
         />
-        <span>just now</span>
+        <span>{`${hours}:${minutes}`}</span>
       </div>
       <div className={styles.messageContent}>
-        <p>{message.text}</p>
+        {message.text && <p>{message?.text}</p>}
         {message.img && <img src={message.img} alt="" />}
       </div>
     </div>

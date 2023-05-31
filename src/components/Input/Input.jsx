@@ -22,13 +22,13 @@ const Input = () => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
-  const handleSend = async () => {
+  const handleSend = async (e) => {
+    e.preventDefault();
     if (img) {
       const storageRef = ref(storage, uuid());
       const uploadTask = uploadBytesResumable(storageRef, img);
       uploadTask.on(
         (error) => {
-          //TODO:Handle Error
           console.log(error);
         },
         () => {
@@ -42,7 +42,6 @@ const Input = () => {
                 img: downloadURL,
               }),
             });
-            console.log(downloadURL);
           });
         }
       );
@@ -76,9 +75,11 @@ const Input = () => {
   };
 
   return (
-    <div className={styles.input}>
+    <form className={styles.input}>
       <input
         type="text"
+        minLength={1}
+        required
         placeholder="Type something..."
         onChange={(e) => setText(e.target.value)}
         value={text}
@@ -89,14 +90,16 @@ const Input = () => {
           type="file"
           style={{ display: "none" }}
           id="file"
-          onChange={(e) => setImg(e.target.files[0])}
+          onChange={(e) => {
+            setImg(e.target.files[0]);
+          }}
         />
         <label htmlFor="file">
           <img src={Img} alt="" />
         </label>
         <button onClick={handleSend}>Send</button>
       </div>
-    </div>
+    </form>
   );
 };
 

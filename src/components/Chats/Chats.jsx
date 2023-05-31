@@ -25,7 +25,6 @@ const Chats = () => {
       };
     };
 
-    currentUser.uid && console.log("fdsf");
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
@@ -35,7 +34,7 @@ const Chats = () => {
 
   return (
     <div className="chats">
-      {Object.entries(chats)
+      {Object.entries(chats || {})
         ?.sort((a, b) => b[1].date - a[1].date)
         .map((chat) => {
           const {
