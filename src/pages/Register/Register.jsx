@@ -34,7 +34,7 @@ const Register = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     const file = e.target[3].files[0];
-    console.log(file);
+
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
 

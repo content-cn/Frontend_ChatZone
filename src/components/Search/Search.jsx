@@ -84,11 +84,12 @@ const Search = () => {
       <div className={styles.searchForm}>
         <input
           type="text"
-          placeholder="Find a user"
+          placeholder="Find a user or chat with testuser"
           onKeyDown={handleKey}
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
+        <span onClick={handleSearch}>🔍</span>
       </div>
       {err && <span>User not found!</span>}
       {user && (

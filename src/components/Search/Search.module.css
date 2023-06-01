@@ -4,6 +4,7 @@
 
 .searchForm {
   padding: 10px;
+  position: relative;
 }
 
 .searchForm input {
@@ -11,6 +12,18 @@
   border: none;
   color: white;
   outline: none;
+  width: 100%;
+}
+
+.searchForm span {
+  position: absolute;
+  right: 0;
+  padding-inline: 9px;
+  border-left: 1px solid white;
+}
+
+.searchForm span:hover {
+  cursor: pointer;
 }
 
 .searchForm input::placeholder {
